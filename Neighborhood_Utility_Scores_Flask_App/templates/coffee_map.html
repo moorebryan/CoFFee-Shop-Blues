@@ -1,0 +1,68 @@
+
+<html>
+<head>
+<link
+    href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css"
+    rel="stylesheet" type="text/css">
+<link
+    href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css"
+    rel="stylesheet" type="text/css">
+
+<script src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+<script src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+
+</head>
+<body>
+<H1>Neighborhood Coffee Shop Utility Scores</H1>
+
+<form action="/">
+<select name="chosen_city">
+	{% for feature in list_of_cities %}
+		{% if feature == chosen_city %}
+			<option selected value="{{ feature }}">{{ feature }}</option> 
+		{% else %} 
+			<option value="{{ feature }}">{{ feature }}</option> 
+		{% endif %}
+	{% endfor %}
+</select>
+<input type="submit">
+</form>
+
+<div style="width: 600px; display: inline-block;vertical-align: top;horizontal-align: left;">
+{{ script|safe }}
+{{ div|safe }}
+<h3>
+This is the main plot I am trying to show on this page.<br>
+This displays the calculated Utility Scores for each 
+neighborhood. These are created by averaging over the Utility Score for all 
+coffee shop in the neighborhood. Higher scores indicate that coffee businesses 
+thrive better in that specific neighborhood. For neighborhoods with between 1 
+and 9 coffee shops in the Yelp database, neighborhood scores were predicted 
+using Lasso Regression and available third-party information.
+</h3>
+</div>
+
+<div style="width: 100px; display: inline-block;vertical-align: top;horizontal-align: left;">
+
+<h3>
+
+</h3>
+</div>
+
+
+
+<div style="width: 600px; display: inline-block;vertical-align: top;;horizontal-align: right;">
+{{ script2|safe }}
+{{ div2|safe }}
+<h3>
+This plot shows the location of all coffee shops in the city 
+which were in the Yelp database. The color of each shop indicates the primary 
+category of the coffee shop. Note that many shops have multiple additional 
+categories. That information is not shown in this plot.
+</h3>
+</div>
+
+
+
+</body>
+</html>
